@@ -18,6 +18,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
+use Closure;
 
 /**
  * Class App
@@ -146,7 +147,13 @@ class App implements MiddlewareInterface
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
         if ($route = $this->router->dispatch($request)) {
-            $this->dispatcher->add($route->getHandlers());
+            foreach ($route->getHandlers() as $handler) {
+                if ($handler instanceof Closure) {
+                    $handler = $handler->bindTo($this);
+                }
+
+                $this->dispatcher->add($handler);
+            }
         }
 
         return $this->dispatcher->process($request, $delegate);
