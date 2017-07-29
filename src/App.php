@@ -8,13 +8,14 @@
 namespace Atom;
 
 use Atom\Container\Container;
+use Atom\Dispatcher\Dispatcher;
 use Atom\Http\Factory;
 use Atom\Interfaces\DispatcherInterface;
 use Atom\Interfaces\RouterInterface;
+use Atom\Router\Router;
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
@@ -40,7 +41,7 @@ class App implements MiddlewareInterface
      */
     protected $router;
     /**
-     * @var RequestInterface $request
+     * @var ServerRequestInterface $request
      */
     protected $request;
 
@@ -80,7 +81,7 @@ class App implements MiddlewareInterface
     }
 
     /**
-     * @return ContainerInterface
+     * @return ContainerInterface|Container
      */
     public function getContainer()
     {
@@ -88,7 +89,7 @@ class App implements MiddlewareInterface
     }
 
     /**
-     * @return DispatcherInterface
+     * @return DispatcherInterface|Dispatcher
      */
     public function getDispatcher()
     {
@@ -96,7 +97,7 @@ class App implements MiddlewareInterface
     }
 
     /**
-     * @return RouterInterface
+     * @return RouterInterface|Router
      */
     public function getRouter()
     {
@@ -104,7 +105,7 @@ class App implements MiddlewareInterface
     }
 
     /**
-     * @return RequestInterface
+     * @return ServerRequestInterface
      */
     public function getRequest()
     {
