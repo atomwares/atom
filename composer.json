@@ -32,6 +32,7 @@
     "atomwares/atom-dispatcher": "^1.0-beta",
     "atomwares/atom-router": "^1.0-beta"
   },
+  "minimum-stability": "beta"
   "provide": {
     "psr/http-message-implementation": "1.0",
     "psr/container-implementation": "1.0"
