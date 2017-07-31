@@ -13,7 +13,7 @@ $ composer require atomwares/atom
 
 ## Usage
 
-Create an bootstrap file with the following contents:
+Create a bootstrap file with the following contents:
 ```php
 <?php
 
