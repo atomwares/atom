@@ -25,7 +25,7 @@ require 'vendor/autoload.php';
 
 $app = new Atom\App();
 
-$app->getRouter()
+$app->router
   ->get(['home' => '/'], function () {
         return 'Hello World!';
     });
