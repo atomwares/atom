@@ -34,4 +34,4 @@ $ php -S localhost:8000
 
 ## License
 
-The Atom Framework is licensed under the MIT license. See [License File](LICENSE.md) for more information.
+The Atom Framework is licensed under the MIT license. See [License File](LICENSE) for more information.
