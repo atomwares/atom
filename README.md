@@ -4,11 +4,11 @@
 
 The simplest way to install and get started is using the skeleton project:
 ```bash
-$ composer create-project atomwares/atom-project <project dir> -s beta
+$ composer create-project atomwares/atom-project <project dir>
 ```
 Or install Atom standalone using Composer:
 ```bash
-$ composer require atomwares/atom @beta
+$ composer require atomwares/atom
 ```
 
 ## Usage
