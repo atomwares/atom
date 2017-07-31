@@ -27,7 +27,7 @@ $app = (new Atom\App())->router
 $app->run();
 ```
 
-You may run script using the built-in PHP server:
+You may run the script using the built-in PHP server:
 ```bash
 $ php -S localhost:8000
 ```
