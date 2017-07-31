@@ -27,10 +27,10 @@
     "psr/http-message": "^1.0",
     "psr/container": "^1.0",
     "http-interop/http-middleware": "^0.4.1",
-    "atomwares/atom-container": "^1.0-beta",
-    "atomwares/atom-http": "^1.0-beta",
-    "atomwares/atom-dispatcher": "^1.0-beta",
-    "atomwares/atom-router": "^1.0-beta"
+    "atomwares/atom-container": "1.*@beta",
+    "atomwares/atom-http": "1.*@beta",
+    "atomwares/atom-dispatcher": "1.*@beta",
+    "atomwares/atom-router": "1.*@beta"
   },
   "provide": {
     "psr/http-message-implementation": "1.0",
