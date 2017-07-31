@@ -19,7 +19,7 @@ Create a bootstrap file with the following contents:
 
 require 'vendor/autoload.php';
 
-$app = (new Atom\App())->router
+($app = new Atom\App())->router
   ->get(['home' => '/'], function () {
         return 'Hello World!';
     });
