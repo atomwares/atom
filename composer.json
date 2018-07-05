@@ -23,10 +23,10 @@
     "homepage": "http://atomframework.net"
   }],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=7.0.0",
     "psr/http-message": "^1.0",
     "psr/container": "^1.0",
-    "http-interop/http-middleware": "^0.4.1",
+    "psr/http-server-handler": "^1.0",
     "atomwares/atom-container": "dev-master",
     "atomwares/atom-http": "dev-master",
     "atomwares/atom-dispatcher": "dev-master",

@@ -13,8 +13,8 @@ use Atom\Http\Factory;
 use Atom\Interfaces\DispatcherInterface;
 use Atom\Interfaces\RouterInterface;
 use Atom\Router\Router;
-use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -24,7 +24,7 @@ use Closure;
 /**
  * Class App
  *
- * @package Atom\Core
+ * @package Atom
  */
 class App implements MiddlewareInterface
 {
@@ -141,23 +141,22 @@ class App implements MiddlewareInterface
 
     /**
      * @param ServerRequestInterface $request
-     * @param DelegateInterface $delegate
-     *
+     * @param RequestHandlerInterface $handler
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($route = $this->router->dispatch($request)) {
-            foreach ($route->getHandlers() as $handler) {
-                if ($handler instanceof Closure) {
-                    $handler = $handler->bindTo($this);
+            foreach ($route->getHandlers() as $middleware) {
+                if ($middleware instanceof Closure) {
+                    $middleware = $middleware->bindTo($this);
                 }
 
-                $this->dispatcher->add($handler);
+                $this->dispatcher->add($middleware);
             }
         }
 
-        return $this->dispatcher->process($request, $delegate);
+        return $this->dispatcher->process($request, $handler);
     }
 
     /**
@@ -168,7 +167,7 @@ class App implements MiddlewareInterface
         static::respond(
             $this->dispatcher
                 ->add($this)
-                ->dispatch($this->request)
+                ->handle($this->request)
         );
     }
 
